@@ -1,0 +1,27 @@
+//4_inductionA.txt
+//Homework 7
+
+Use mathematical induction to prove that the sum of the first n even natural numbers equals n(n+1).
+That is, that:
+
+    2 + 4 + ... + 2n = n(n+1)
+
+(Note that we are considering "2" to be the first even natural number.)
+
+Base Case: We must show that P(n) holds for the smallest possible n, that is,
+we must prove P(1). We have that LHS(1) = 2 and that RHS(1) = 1(1+1) = 2.
+Since LHS(1) = RHS(1), then P(1) holds.
+
+Inductive step: We assume the inductive hypothesis -- that P(k) holds for
+some fixed positive integer k. We must show that P(k+1) holds.
+If P(k) holds, then LHS(k) = RHS(k). To show P(k+1), we must show that
+LHS(k+1) = RHS(k+1).
+
+We have that:
+    LHS(k+1) = 2 + 4 + ... + 2k + 2(k+1)
+             = LHS(k) + 2(k+1)
+             = RHS(k) + 2(k+1) // inductive hypothesis
+             = k(k+1) + 2(k+1)
+             = k+1(k+2)
+             = RHS(k+1)
+Thus LHS(k+1) = RHS(k+1), and so P(k+1) holds.

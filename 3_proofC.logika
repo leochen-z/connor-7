@@ -1,0 +1,44 @@
+//3_proofC.logika
+//Homework 7
+
+//Complete the following predicate logic proof. When you finish,
+//the file should say "Logika verified".
+
+//HINT: you can use ∀e multiple times to plug the SAME individual into DIFFERENT ∀ quantifiers
+
+∀ x ∀ y ∀ z (P(x, y) ^ P(y, z) → P(x, z)), ∀ x ¬P(x, x) ⊢ ∀ x ∀ y (P(x, y) → ¬P(y, x))
+{
+    1. ∀ x ∀ y ∀ z (P(x, y) ^ P(y, z) → P(x, z))                premise
+    2. ∀ x ¬P(x, x)                                             premise
+    3. { // Ai for A x
+        4. a
+        5. A y A z (P(a, y) ^ P(y, z) → P(a, z))                Ae 1 a
+        6. { // Ai For A y
+            7. b
+            8. A z (P(a, b) ^ P(b, z) -> P(a, z))               Ae 5 b
+            9. { // ->i
+                10. P(a, b)                                     assume
+                11. P(a, b) ^ P(b, a) -> P(a, a)                Ae 8 a
+                12. { // !i
+                    13. P(b, a)                                 assume
+                    14. P(a, b) ^ P(b, a)                       ^i 10 13
+                    15. P(a, a)                                 ->e 11 14
+                    16. ¬P(a, a)                                Ae 2 a
+                    17. _|_                                     !e 15 16
+                    // want: _|_
+                }
+                18. ¬P(b, a)                                    !i 12
+                // want: ¬P(y, x)
+                // can get from 2?
+            }
+            19. P(a, b) -> ¬P(b, a)                             ->i 9
+            // want: (P(x, y) → ¬P(y, x))
+        }
+        20. A y (P(a, y) -> ¬P(y, a))                           Ai 6
+        // want: ∀ y (P(x, y) → ¬P(y, x))
+    }
+    21. A x A y (P(x, y) -> ¬P(y, x))                           Ai 3
+    //want: ∀ x ∀ y (P(x, y) → ¬P(y, x))
+    //∀ x (∀ y (P(x, y) → ¬P(y, x)))
+    // use Ai
+}

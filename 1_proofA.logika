@@ -1,0 +1,29 @@
+//1_proofA.logika
+//Homework 7
+
+//Complete the following predicate logic proof. When you finish,
+//the file should say "Logika verified".
+
+∀ x ∀ y (S(y) → P(x)) ⊢ (∃ y S(y)) → (∀ x P(x))
+{
+    1. ∀ x ∀ y (S(y) → P(x))                  premise
+    2. {
+        3. ∃ y S(y)                           assume
+        11. {
+            12. a
+            14. {
+                15. b S(b)                    assume
+                16. A y (S(y) -> P(a))        Ae 1 a
+                17. S(b) -> P(a)              Ae 16 b
+                18. P(a)                      ->e 17 15
+                // want: P(x)
+            }
+            19. P(a)                          Ee 3 14
+            // want: P(x)
+        }
+        20. A x P(x)                          Ai 11
+        // want: ∀ x P(x)
+    }
+    21. (∃ y S(y)) → (∀ x P(x))               ->i 2
+    // want: (∃ y S(y)) → (∀ x P(x))
+}

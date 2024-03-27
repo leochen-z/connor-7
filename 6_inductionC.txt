@@ -1,0 +1,31 @@
+//6_inductionC.txt
+//Homework 7
+
+Use mathematical induction to prove that if n is natural number, then:
+
+    1*1! + 2*2! + ... + n*n! = (n+1)! - 1
+
+Base Case: We must show that P(n) holds for the smallest possible n,
+that is, we must prove P(1). We have that LHS(1) = 1 and
+the RHS(1) = (1+1)! - 1 = 1. Since LHS(1) = RHS(1), then P(1) holds.
+
+Inductive Step: We assume the inductive hypothesis -- that
+P(k) holds for some fixed positive integer k. We must show that
+P(k+1) holds. If P(k) holds, then LHS(k) = RHS(k). To show
+P(k+1), we must show that LHS(k+1) = RHS(k+1).
+
+We have that:
+    LHS(k+1) = 1*1! + 2*2! + ... + k*k! + k+1*k+1!
+    LHS(k+1) = LHS(k) + k+1*k+1!
+    LHS(k+1) = RHS(k) + k+1*k+1! // inductive hypothesis
+    LHS(k+1) = (k+1)! - 1 + k+1*k+1!
+             = (k+1)! + k+1*k+1! - 1
+             = (k+1)! * (1 + (k+1)) - 1
+             = (k+1)! * (k+2) - 1
+             = (k+2)! - 1 // like saying 6! * 7 equals 7!
+
+We know that a number factorial times one number greater than it is just
+the next number factorial. Following along the proof, from the inductive hypothesis
+I was able to set LHS(k) equaling to RHS(k). Since LHS(k) holds, this works.
+Then, factoring out a (k+1)!, I was able to get (k+2)! - 1. Thus, LHS(k+1)
+equals RHS(k+!). Finally, since the LHS and RHS holds, P(k+1) also holds.
